@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+
+  backend:
+    build: .
+    container_name: sentinelops-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - ~/.kube:/root/.kube
+    env_file:
+      - .env
+    environment:
+      - KUBECONFIG=/root/.kube/config
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:15
+    container_name: k8s-agent-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: k8s-agent
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sre_agent
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: k8s-agent-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge

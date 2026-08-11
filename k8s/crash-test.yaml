@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-crash
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: crash-pod
+  namespace: test-crash
+  labels:
+    app: crash-test
+spec:
+  restartPolicy: Never
+  containers:
+  - name: crasher
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo crashing; exit 1; done"]
+    resources:
+      limits:
+        memory: "64Mi"
+

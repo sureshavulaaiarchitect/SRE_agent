@@ -1,0 +1,42 @@
+{
+  "patterns": [
+    {
+      "incident_type": "pod_crash",
+      "conditions": {
+        "exit_code": 1,
+        "restart_count_gte": 3
+      },
+      "root_cause": "bad startup command",
+"recommended_action": "restart_pod",
+      "confidence": "high"
+    },
+    {
+      "incident_type": "pod_crash",
+      "conditions": {
+        "exit_code": 137
+      },
+      "root_cause": "Container killed by OOM — exit code 137",
+      "recommended_action": "increase_limits",
+      "confidence": "high"
+    },
+    {
+      "incident_type": "image_pull_error",
+      "conditions": {
+        "log_contains": "ImagePullBackOff"
+      },
+      "root_cause": "Invalid or unreachable container image tag",
+      "recommended_action": "rollback_deployment",
+      "confidence": "high"
+    },
+    {
+      "incident_type": "oom_killed",
+      "conditions": {
+        "exit_code": 137,
+        "memory_limit_set": true
+      },
+      "root_cause": "Container OOM-killed — memory limit too low",
+      "recommended_action": "increase_limits",
+      "confidence": "high"
+    }
+  ]
+}

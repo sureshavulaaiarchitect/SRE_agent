@@ -1,0 +1,184 @@
+# Python
+.venv/
+venv/
+env/
+ENV/
+.venv*/ 
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pylint_cache/
+htmlcov/
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+.build/
+# PyInstaller doesn't distinguish between local and global, so we block both
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Poetry
+#   poetry.lock is intentionally left in, because it declares hashes
+#   that are used for lockfiles
+poetry.lock
+
+# PDM
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Django # Pillow
+*.png
+*.gif
+*.jpg
+*.jpeg
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# cell
+.cell
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# pytype
+.pytype/
+
+# Cython
+**/*.c
+**/*.so
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+agent*.log
+chat_history.json
+data/chat_history.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.*.example
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker
+.dockerignore  # kept for project root only if needed
+**/.docker
+.docker/
+.dockerignore
+
+# Docker CI image volumes and images
+Volumes/
+**/volumes/
+images/
+**/images/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+.nyc_output
+coverage/
+.nyc_output/
+
+# Node.js / Frontend (Vite/React)
+dashboard/frontend/node_modules/
+dashboard/frontend/dist/
+dashboard/frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+**/*.tgz
+.sass-cache/
+**/.env.*
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+*.tgz
+
+# OS generated files
+.thumbs.db
+thumbnails
+.DS_Store

@@ -1,0 +1,26 @@
+name: deployment_failure_investigation
+version: "1.0"
+incident_type: deployment_failure
+timeout_seconds: 45
+
+sections:
+  - type: sequential
+    steps:
+      - id: collected_evidence
+        action: infrastructure.evidence_collector.collect_full_evidence
+        args:
+          namespace: "{{ namespace }}"
+          pod_name: "{{ pod_name }}"
+      - id: check_pattern
+        action: agent.pattern_layer.check
+        args:
+          evidence: "{{ collected_evidence }}"
+
+  - type: conditional
+    if: "{{ check_pattern.confidence != 'high' }}"
+    steps:
+      - id: analyze_root_cause
+        action: ai.root_cause_engine.analyze
+        timeout: 90
+        args:
+          evidence: "{{ collected_evidence }}" 
